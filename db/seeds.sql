@@ -7,8 +7,8 @@ VALUES
 
 INSERT INTO roles (job_title, department_role_id, salary_role)
 VALUES 
-('Baker', 2, 1.99), 
 ('Deli Clerk', 1, 2.99), 
+('Baker', 2, 1.99), 
 ('Garment Passer Outer', 3, 3.99); 
 
 INSERT INTO employee (first_name, last_name, employee_id, job_title, department, salary, manager_id)

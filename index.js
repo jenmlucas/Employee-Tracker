@@ -4,8 +4,6 @@ const consoleTable = require('console.table');
 const DB = require('./db/index')
 
 
-
-
 connect.connect(err => {
     if (err) throw err;
     start();
@@ -167,8 +165,8 @@ const addRole = () => {
                     }
                 ])
                 .then((answers) => {
-                    DB.createRole(answers.addRole, answers.addSalary, answers.department)
-                        .then(() => console.log(`added ${answers.addRole}, added ${answers.addSalary}, added ${answers.department}`))
+                    DB.createRole(answers.addRole, answers.department, answers.addSalary)
+                        .then(() => console.log(`added ${answers.addRole}, added ${answers.department}, added ${answers.addSalary}`))
                         .then(() => start());
                 });
         });
@@ -183,7 +181,7 @@ const quit = () => {
 
 // GIVEN a command-line application that accepts user input
 // WHEN I start the application
-// THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
+// THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role- DONE
 
 // WHEN I choose to view all departments
 // THEN I am presented with a formatted table showing department names and department ids

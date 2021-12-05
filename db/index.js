@@ -10,7 +10,7 @@ createDepartment(department) {
   };
 
 createRole(addRole, department, addSalary) {
-    return this.connect.promise().query("INSERT INTO roles (job_title, department_role_id, salary_role) VALUES (?, ?, ?);" [addRole, department, addSalary]);
+    return this.connect.promise().query("INSERT INTO roles (job_title, department_role_id, salary_role) VALUES (?, ?, ?);", [addRole, department, addSalary]);
 };
 
 findAllDepartments() {
