@@ -141,9 +141,9 @@ const addDepartment = () => {
 
 const addRole = () => {
     DB.findAllDepartments()
-        .then((department) => {
-            const departmentOptions = department.map(({id, name}) => ({
-                name: name, 
+        .then(([department]) => {
+            const departmentOptions = department.map(({id, department_name}) => ({
+                name: department_name, 
                 value: id
             }));
 
@@ -167,7 +167,7 @@ const addRole = () => {
                     }
                 ])
                 .then((answers) => {
-                    DB.createRole(answers.addRole, answers.addSalary, answers.department.value)
+                    DB.createRole(answers.addRole, answers.addSalary, answers.department)
                         .then(() => console.log(`added ${answers.addRole}, added ${answers.addSalary}, added ${answers.department}`))
                         .then(() => start());
                 });
