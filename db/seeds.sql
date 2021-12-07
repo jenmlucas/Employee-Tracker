@@ -11,7 +11,7 @@ VALUES
 ('Baker', 2, 1.99), 
 ('Garment Passer Outer', 3, 3.99); 
 
-INSERT INTO employee (first_name, last_name, title department_name, salary, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-('Jennifer', 'Lucas','Baker', 'Bakery', 1.99, 1), 
-('Dylan', 'Lucas', 'Deli', 'Deli Clerk', 2.99, 2);
+('Jennifer', 'Lucas', 2, 1), 
+('Dylan', 'Lucas', 1, 2);

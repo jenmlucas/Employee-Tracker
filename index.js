@@ -95,7 +95,7 @@ const viewDepartments = () => {
             const table = consoleTable.getTable(res);
             console.log(table);
         } else {
-            console.log("YOU MESSED UP DEPARTMENT");
+            console.log("YOU MESSED UP DEPARTMENT", err);
         }
     })
 };
@@ -110,26 +110,33 @@ const viewRoles = () => {
             const table = consoleTable.getTable(res);
             console.log(table);
         } else {
-            console.log("YOU MESSED UP ROLES");
+            console.log("YOU MESSED UP ROLES", err);
         }
     })
 };
 // WHEN I choose to view all employees
 // THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
 const viewEmployees = () => {
-    const sql = `SELECT employee.id, employee.first_name, employee.last_name, roles.title AS role_title, department.name AS department_name, roles.salary, employee.manager_id
-    FROM employee
-    INNER JOIN roles 
-    ON employee.role_id = roles.id
-    INNER JOIN department
-    ON roles.department_id = department.id`;
+    const sql = `SELECT 
+    employee.id, 
+    employee.first_name, 
+    employee.last_name, 
+    roles.title, 
+    department.department_name AS department,
+    roles.salary, 
+    employee.manager_id
+FROM employee 
+LEFT JOIN roles 
+ON employee.role_id = roles.id
+LEFT JOIN department
+ON roles.department_id = department.id`;
 
     connect.query(sql, (err, res) => {
         if (res) {
             const table = consoleTable.getTable(res);
             console.log(table);
         } else {
-            console.log("YOU MESSED UP EMPLOYEE");
+            console.log("YOU MESSED UP EMPLOYEE", err);
         }
     })
 };
@@ -187,12 +194,12 @@ const addRole = () => {
 // WHEN I choose to add an employee
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 const addEmployee = () => {
-    DB.findAllEmployee()
+    DB.findAllRoles()
         .then(([employee]) => {
-            const employeeOptions = employee.map(({id, job_title }) => ({
-                name: job_title,
+            const employeeRoleOptions = employee.map(({id, title}) => ({
+                name: title ,
                 value: id
-            }));
+            })); console.log(employeeRoleOptions)
             prompt(
                 [
                     {
@@ -209,13 +216,13 @@ const addEmployee = () => {
                         type: "list",
                         name: "roles",
                         message: "Which role does your employee belong too?",
-                        choices: employeeOptions
-                    }
+                        choices: employeeRoleOptions
+                    },
                 ]
             )
                 .then((answers) => {
-                    DB.createEmployee(answers.firstName, answers.lastName, answers.roles)
-                        .then(() => console.log(`added ${answers.firstName}, added ${answers.lastName}, added ${answers.roles}`))
+                    DB.addEmployee(answers.firstName, answers.lastName, answers.roles)
+                        .then(() => console.log(` added ${answers.roles}, added ${answers.firstName}, added ${answers.lastName}`))
                         .then(() => start());
                 })
         })

@@ -17,12 +17,12 @@ findAllDepartments() {
     return this.connect.promise().query("SELECT id, department_name FROM department ORDER BY id;");
 };
 
-createEmployee(firstName, lastName, roles) {
-    return this.connect.promise().query("INSERT INTO employee (first_name, last_name, employee_id) VALUES (?, ?, ?);", [firstName, lastName, roles]);
+addEmployee(firstName, lastName, roles) {
+    return this.connect.promise().query("INSERT INTO employee (first_name, last_name, id) VALUES (?, ?,  ?);", [firstName, lastName, roles]);
 };
 
-findAllEmployee() {
-    return this.connect.promise().query("SELECT id, first_name, last_name FROM employee ORDER BY id;");
+findAllRoles() {
+    return this.connect.promise().query("SELECT id, title FROM roles ORDER BY id;");
 };
 };
 
