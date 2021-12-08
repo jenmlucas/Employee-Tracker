@@ -6,21 +6,21 @@ Employee- Tracker was created so Managers can view their, employee's, department
 ## Table of Contents (Optional)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Credits](#credits)
 * [License](#license)
 * [Contributing](#contributing)
 * [Test](#test)
 * [Questions](#questions)
 
 ## Installation
-Clone the repo, then install the dependencies (express, console.table, inquirer, and mysql2). Change your password in the connect.js file. Then run "node index" to srart the program, then follow the prompts. 
+Clone the repo, then do "npm install". Change your password in the connect.js file. Then open your Mysql and run "source db/schema.sql" and "source db/seeds.sql", once successful, run "quit". Then run "node index" in the terminal to start the program, and follow the prompts. 
 
 ## Usage
 This is what it will look like on your device. 
+[Screencastify](https://watch.screencastify.com/v/VqM77zul8X8l4X17oouz)
+![Employee Tracker](images/screencastify.png)
 
-[Production Link](https://agile-river-98881.herokuapp.com/)
-
-   
+## License 
+N/A
 
 ## Contributing
 Jennifer Lucas 

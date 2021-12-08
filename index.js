@@ -270,7 +270,6 @@ const updateEmployeeRole = () => {
       name: `${first_name} ${last_name}`,
       value: id,
     }));
-    console.log(employeeOptions);
     prompt([
       {
         type: "list",
@@ -286,7 +285,6 @@ const updateEmployeeRole = () => {
           name: title,
           value: id,
         }));
-        console.log(roleOptions);
         prompt([
           {
             type: "list",
