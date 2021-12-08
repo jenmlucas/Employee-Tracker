@@ -29,8 +29,8 @@ findAllEmployees() {
     return this.connect.promise().query("SELECT employee.id, manager_id, first_name, last_name FROM employee ORDER BY id;");
 };
 
-updateRole(employeeId, role){
-    return this.connect.promise().query("UPDATE employee SET role_id = ? WHERE id = ?;", [employeeId, role])
+updateRole(role, employeeId){
+    return this.connect.promise().query("UPDATE employee SET role_id = ? WHERE id = ?;", [role, employeeId])
 };
 
 

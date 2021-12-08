@@ -298,7 +298,8 @@ const updateEmployeeRole = () => {
           .then((answers) => {
             let role = answers.role;
             console.log(answers.role);
-            db.updateRole(employeeId, role)  
+            console.log("employeeId", employeeId)
+            db.updateRole(role, employeeId)  
             .then(() => console.log("Employee roll updated"))
             .then(() => start());
             
