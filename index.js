@@ -101,6 +101,7 @@ const viewDepartments = () => {
     if (res) {
       const table = consoleTable.getTable(res);
       console.log(table);
+      start();
     } else {
       console.log("YOU MESSED UP DEPARTMENT", err);
     }
@@ -118,6 +119,7 @@ const viewRoles = () => {
     if (res) {
       const table = consoleTable.getTable(res);
       console.log(table);
+      start();
     } else {
       console.log("YOU MESSED UP ROLES", err);
     }
@@ -147,6 +149,7 @@ ON manager.id = employee.manager_id;`;
     if (res) {
       const table = consoleTable.getTable(res);
       console.log(table);
+      start();
     } else {
       console.log("YOU MESSED UP EMPLOYEE", err);
     }
@@ -174,7 +177,6 @@ const addRole = () => {
       name: department_name,
       value: id,
     }));
-
     prompt([
       {
         type: "input",
@@ -212,7 +214,6 @@ const addEmployee = () => {
       name: title,
       value: id,
     }));
-    console.log(employeeRoleOptions);
     DB.findAllEmployees().then(([manager]) => {
       const managerOptions = manager.map(
         ({ manager_id, first_name, last_name }) => ({
@@ -220,7 +221,6 @@ const addEmployee = () => {
           value: manager_id,
         })
       );
-      console.log(managerOptions);
       prompt([
         {
           type: "input",
