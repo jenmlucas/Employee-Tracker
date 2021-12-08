@@ -18,12 +18,22 @@ findAllDepartments() {
 };
 
 addEmployee(firstName, lastName, roles) {
-    return this.connect.promise().query("INSERT INTO employee (first_name, last_name, id) VALUES (?, ?,  ?);", [firstName, lastName, roles]);
+    return this.connect.promise().query("INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?,  ?);", [firstName, lastName, roles]);
 };
 
 findAllRoles() {
     return this.connect.promise().query("SELECT id, title FROM roles ORDER BY id;");
 };
+
+findAllEmployees() {
+    return this.connect.promise().query("SELECT employee.id, manager_id, first_name, last_name FROM employee ORDER BY id;");
+};
+
+updateRole(employeeId, role){
+    return this.connect.promise().query("UPDATE employee SET role_id = ? WHERE id = ?;", [employeeId, role])
+};
+
+
 };
 
 module.exports = new DB(connect); 
