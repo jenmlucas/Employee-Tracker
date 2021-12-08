@@ -216,9 +216,9 @@ const addEmployee = () => {
     }));
     DB.findAllEmployees().then(([manager]) => {
       const managerOptions = manager.map(
-        ({ manager_id, first_name, last_name }) => ({
+        ({ id, first_name, last_name }) => ({
           name: `${first_name} ${last_name}`,
-          value: manager_id,
+          value: id,
         })
       );
       prompt([
